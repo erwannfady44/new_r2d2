@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package command;
+
+service Command {
+    rpc SendCommand (MotorCommand) returns (Empty);
+
+    rpc GetBatteryLevel (Empty) returns (BatteryLevel);
+}
+
+message MotorCommand {
+    int32 left_motor = 1;
+    int32 right_motor = 2;
+    int32 head_motor = 3;
+}
+
+message BatteryLevel {
+    int32 left_battery = 1;
+    int32 right_battery = 2;
+    int32 voltage_24v = 3;
+}
+
+message Empty {}
